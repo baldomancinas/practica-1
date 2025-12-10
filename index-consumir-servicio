@@ -16,10 +16,7 @@ function consumir() {
     fetch("https://my-json-server.typicode.com/dp-danielortiz/dptest_jsonplaceholder/items")
         .then(response => response.json())
         .then(data => {
-            // Filtrar color red
             const filtrado = data.filter(item => item.color === "red");
-
-            // Imprimir JSON formateado en HTML
             document.getElementById("resultado").textContent =
                 JSON.stringify(filtrado, null, 2);
         })
