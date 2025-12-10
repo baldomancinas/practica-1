@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Consumo REST - JavaScript</title>
+</head>
+<body>
+
+<h2>Consumir Servicio REST (JavaScript)</h2>
+<button onclick="consumir()">Consumir Servicio</button>
+
+<pre id="resultado"></pre>
+
+<script>
+function consumir() {
+    fetch("https://my-json-server.typicode.com/dp-danielortiz/dptest_jsonplaceholder/items")
+        .then(response => response.json())
+        .then(data => {
+            // Filtrar color red
+            const filtrado = data.filter(item => item.color === "red");
+
+            // Imprimir JSON formateado en HTML
+            document.getElementById("resultado").textContent =
+                JSON.stringify(filtrado, null, 2);
+        })
+        .catch(error => console.error("Error:", error));
+}
+</script>
+
+</body>
+</html>
