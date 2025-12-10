@@ -6,13 +6,9 @@ $resultado = [];
 if (isset($_POST['consumir'])) {
     $api = new ApiClient();
     $data = $api->getItems();
-
-    // Filtrar solo color green
     $resultado = array_values(array_filter($data, function ($item) {
         return isset($item['color']) && $item['color'] === 'green';
     }));
-
-    // Guardar archivo JSON
     file_put_contents(
         "Respuesta1.json",
         json_encode($resultado, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
